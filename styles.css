@@ -1,0 +1,87 @@
+:root {
+    --main-txt-color: #192231;
+    --library-bg-color: #f4f4f4;
+    --card-bg-color: #d1c9b2;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+    padding: 8px;
+}
+
+#welcome-message {
+    font-size: 2.5em;
+}
+
+.library-container {
+    background-color: var(--library-bg-color);
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.1);
+    height: 80%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.book-card {
+    height: 19em;
+    width: 17em;
+    padding: 0.33em;
+    border-radius: 0.33em;
+    background-color: var(--card-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1.25em;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.25s;
+}
+
+.book-card:hover {
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.3);
+}
+
+.book-card img {
+    height: 50px;
+    width: 50px;
+    align-self: center;
+    padding: .25em;
+}
+
+.book-title {
+    padding: .25em;
+    padding-top: 0.4em;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.book-author {
+    padding: .25em;
+    margin: 0;
+    font-size: 1em;
+    text-align: center;
+}
+
+.book-pages,
+.book-review,
+.book-read {
+    padding: 0.25em;
+    margin: 0;
+    font-size: .9em;
+}
+
+.book-read {
+    padding-bottom: 0.4em;
+}
