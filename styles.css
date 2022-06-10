@@ -35,8 +35,8 @@ body {
 }
 
 .book-card {
-    height: 19em;
-    width: 17em;
+    height: 18.5em;
+    width: 16.5em;
     padding: 0.33em;
     border-radius: 0.33em;
     background-color: var(--card-bg-color);
@@ -68,7 +68,7 @@ body {
 }
 
 .book-author {
-    padding: .25em;
+    padding: .23em;
     margin: 0;
     font-size: 1em;
     text-align: center;
@@ -77,7 +77,7 @@ body {
 .book-pages,
 .book-review,
 .book-read {
-    padding: 0.25em;
+    padding: 0.2em;
     margin: 0;
     font-size: .9em;
 }

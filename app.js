@@ -35,6 +35,7 @@ function addBook(title, author, pages, read, review) {
 
 
 function updateLibraryDisplay() {
+    libraryContainer.innerHTML = "";
     myLibrary.forEach(function (book, index) {
         const newCardMarkupRead = `
 <div class="book-card" data-index="${index}">
