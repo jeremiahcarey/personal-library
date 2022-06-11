@@ -15,21 +15,53 @@
 
 <body>
     <div class="header">
-        <div class="header-left">
+        <div class="header-top">
             <h1 id="welcome-message">Welcome to your library!</h1>
+        </div>
+        <div class="header-bottom">
             <div class="stats-container">
                 <div class="stats-msg">Library information:</div>
-                <div class="stats-content"></div>
+                <div class="stats-content">
+                    <div class="books-total"> books in library</div>
+                    <div class="books-read"> books read</div>
+                    <div class="pages-read"> pages read</div>
+                </div>
             </div>
-        </div>
-        <div class="header-right">
-            <button type="button" id="add-book">Add New Book</button>
-            <button type="button" id="clear-books">Clear All Books</button>
-            <button type="button" id="about-project">About This App</button>
+
+            <div class="header-right">
+                <button type="button" id="add-book">Add New Book</button>
+                <button type="button" id="clear-books">Clear All Books</button>
+                <button type="button" id="about-project">About This App</button>
+            </div>
         </div>
     </div>
     <div class="library-container">
 
+    </div>
+
+    <div id="add-book-modal" class="modal">
+        <div id="add-book-content">
+            <div class="close" id="close-add-modal">&times;
+            </div>
+            <form id="add-book-form" action="javascript:void(0);"">
+            <div><input class=" input" type="text" id="title" placeholder="Title" required max-lenth="100">
+        </div>
+        <div><input class="input" type="text" id="author" placeholder="Author" required max-length="100"></div>
+        <div><input class="input" type="number" id="pages" placeholder="Pages" max="1000"></div>
+        <div>
+            <input type="radio" id="read" name="read" value="read"><label for="read">Read</label>
+            <input type="radio" id="unread" name="read" value="unread"><label for="unread">Unread</label>
+        </div>
+        <div><select class="input" id="review">
+                <option value="Loved it">Loved it.</option>
+                <option value="Liked it">Liked it.</option>
+                <option value="N/A">N/A.</option>
+                <option value="Didn't like it">Didn't like it.</option>
+                <option value="Hated it">Hated it.</option>
+            </select></div>
+        <div><button type="submit">Add Book</button></div>
+        </form>
+    </div>
     </div>
 
     <script src="app.js"></script>

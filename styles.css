@@ -2,6 +2,7 @@
     --main-txt-color: #192231;
     --library-bg-color: #f4f4f4;
     --card-bg-color: #d1c9b2;
+    --button-color: #1c1774;
 }
 
 body {
@@ -14,14 +15,35 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: space-around;
     height: 20%;
     padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #welcome-message {
     font-size: 2.5em;
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 6em;
+}
+
+button {
+    padding: .75em;
+    width: 10em;
+    border: none;
+    color: white;
+    background-color: var(--button-color);
+    border-radius: 15px;
+    margin-right: 5em;
+}
+
+button:hover {
+    box-shadow: 0 0 2px black;
 }
 
 .library-container {
@@ -35,8 +57,8 @@ body {
 }
 
 .book-card {
-    height: 18.5em;
-    width: 16.5em;
+    height: 19em;
+    width: 17em;
     padding: 0.33em;
     border-radius: 0.33em;
     background-color: var(--card-bg-color);
@@ -84,4 +106,66 @@ body {
 
 .book-read {
     padding-bottom: 0.4em;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#add-book-content {
+    background-color: var(--card-bg-color);
+    margin: 10% auto;
+    padding: 2em;
+    border: 1px solid #888;
+    border-radius: 0.33em;
+    width: 18em;
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    align-self: flex-end;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: .75em;
+    align-items: center;
+}
+
+.modal .input {
+    padding: 0.5em;
+    width: 16em;
+    border: 1px solid #888;
+    border-radius: 0.33em;
+}
+
+.modal .input:focus {
+    outline: none;
+    border: 1px solid rgba(24, 108, 197, 1);
+    box-shadow: 0 0 5px rgb(24, 108, 197);
+}
+
+.modal input[type="checkbox"] {
+    margin: 0.5em;
 }
