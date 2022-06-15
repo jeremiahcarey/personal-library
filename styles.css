@@ -23,13 +23,27 @@ body {
 }
 
 #welcome-message {
-    font-size: 2.5em;
+    font-size: 2.75em;
 }
 
 .header-bottom {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 6em;
+}
+
+.stats-container {
+    width: 10em;
+    border: 2px solid var(--card-bg-color);
+    border-radius: 0.3em;
+    padding: 1em;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 3em;
+    align-items: center;
 }
 
 button {
@@ -39,7 +53,6 @@ button {
     color: white;
     background-color: var(--button-color);
     border-radius: 15px;
-    margin-right: 5em;
 }
 
 button:hover {
@@ -59,7 +72,7 @@ button:hover {
 .book-card {
     height: 19em;
     width: 17em;
-    padding: 0.33em;
+    padding: 0.5em;
     border-radius: 0.33em;
     background-color: var(--card-bg-color);
     display: flex;
@@ -104,8 +117,39 @@ button:hover {
     font-size: .9em;
 }
 
-.book-read {
+.card-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.read-wrapper {
     padding-bottom: 0.4em;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.delete-button {
+    margin-left: auto;
+    padding-right: 3px;
+}
+
+.delete-button img {
+    height: 20px;
+    width: auto;
+    transition: all .1s ease-in-out;
+}
+
+.delete-button img:hover,
+.delete-button img:focus {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.hidden-help-div {
+    margin-right: auto;
+    margin-left: auto;
+    visibility: hidden;
 }
 
 .modal {
@@ -168,4 +212,58 @@ button:hover {
 
 .modal input[type="checkbox"] {
     margin: 0.5em;
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: green;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px green;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
 }
