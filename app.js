@@ -23,6 +23,10 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+function addBook(title, author, pages, read) {
+    myLibrary.push(new Book(title, author, pages, read));
+}
+
 toggleRead = function (index) {
     if (myLibrary[index].read === "read") {
         myLibrary[index].read = "unread";
@@ -30,13 +34,6 @@ toggleRead = function (index) {
         myLibrary[index].read = "read";
     }
 }
-
-
-
-function addBook(title, author, pages, read) {
-    myLibrary.push(new Book(title, author, pages, read));
-}
-
 
 
 const sumOfRead = function () {
@@ -66,8 +63,6 @@ function restoreLocalData() {
         updateLibraryDisplay();
     }
 }
-
-
 
 function updateLibraryDisplay() {
     booksTotal.innerText = `${myLibrary.length}`;
