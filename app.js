@@ -1,6 +1,9 @@
 const libraryContainer = document.querySelector(".library-container");
 const addBookBtn = document.querySelector("#add-book");
 const clearAllBtn = document.querySelector("#clear-books");
+const aboutBtn = document.querySelector("#about-project");
+const aboutModal = document.querySelector("#about-project-modal");
+const closeAboutModal = document.querySelector("#close-about-modal");
 const addBookModal = document.querySelector("#add-book-modal");
 const closeAddModal = document.querySelector("#close-add-modal");
 const addBookForm = document.querySelector("#add-book-form");
@@ -20,11 +23,11 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-Book.prototype.toggleRead = function () {
-    if (this.read === "read") {
-        this.read = "unread";
+toggleRead = function (index) {
+    if (myLibrary[index].read === "read") {
+        myLibrary[index].read = "unread";
     } else {
-        this.read = "read";
+        myLibrary[index].read = "read";
     }
 }
 
@@ -34,8 +37,7 @@ function addBook(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
 }
 
-addBook("The Hobbit", "J.R.R. Tolkien", 304, "read");
-addBook("The Fellowship of the Ring", "J.R.R. Tolkien", 423, "unread");
+
 
 const sumOfRead = function () {
     let sum = 0;
@@ -47,6 +49,23 @@ const sumOfRead = function () {
     return sum;
 }
 
+function saveLocal() {
+    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
+}
+
+function restoreLocalData() {
+    if (!localStorage.myLibrary) {
+        addBook("The Hobbit", "J.R.R. Tolkien", 304, "read");
+        addBook("The Fellowship of the Ring", "J.R.R. Tolkien", 423, "unread");
+        saveLocal();
+        updateLibraryDisplay();
+    } else {
+        let localData = localStorage.getItem("myLibrary");
+        localData = JSON.parse(localData);
+        myLibrary = localData;
+        updateLibraryDisplay();
+    }
+}
 
 
 
@@ -104,10 +123,10 @@ function updateLibraryDisplay() {
     })
 }
 
-updateLibraryDisplay();
-
 addBookBtn.addEventListener("click", () => addBookModal.style.display = "block");
 closeAddModal.addEventListener("click", () => addBookModal.style.display = "none");
+aboutBtn.addEventListener("click", () => aboutModal.style.display = "block");
+closeAboutModal.addEventListener("click", () => aboutModal.style.display = "none");
 
 addBookForm.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -115,22 +134,27 @@ addBookForm.addEventListener("submit", (e) => {
     const [title, author, pages, read] = [...newBookData.values()];
     myLibrary.push(new Book(title, author, parseInt(pages), read));
     updateLibraryDisplay();
+    saveLocal();
     addBookForm.reset();
     addBookModal.style.display = "none";
 });
 
 clearAllBtn.addEventListener("click", () => {
     myLibrary.length = 0;
+    localStorage.clear();
     updateLibraryDisplay();
 });
 
 libraryContainer.addEventListener("click", function (e) {
     if (e.target.classList.contains("slider")) {
-        myLibrary[e.target.dataset.index].toggleRead();
+        toggleRead(e.target.dataset.index);
         updateLibraryDisplay();
+        saveLocal();
     } else if (e.target.classList.contains("delete-card")) {
         myLibrary.splice(e.target.dataset.index, 1);
         updateLibraryDisplay();
+        saveLocal();
     }
 });
 
+restoreLocalData();

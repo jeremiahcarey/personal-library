@@ -153,7 +153,6 @@ button:hover {
 }
 
 .modal {
-    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -165,7 +164,16 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-#add-book-content {
+#add-book-modal {
+    display: none;
+}
+
+#about-project-modal {
+    display: none;
+}
+
+#add-book-content,
+#about-project-content {
     background-color: var(--card-bg-color);
     margin: 10% auto;
     padding: 2em;
@@ -175,6 +183,18 @@ button:hover {
     display: flex;
     flex-direction: column;
 }
+
+#about-project-content {
+    margin: 8% auto;
+    width: 25em;
+}
+
+#about-project-content h1 {
+    font-size: 1.25em;
+    padding-top: 0;
+}
+
+
 
 .close {
     align-self: flex-end;
